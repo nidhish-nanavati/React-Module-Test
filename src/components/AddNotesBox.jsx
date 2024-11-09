@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import send_image from '../assets/send.png'
 
 const AddNotesBox = ({selectedNote}) => {
 
@@ -21,10 +22,6 @@ const AddNotesBox = ({selectedNote}) => {
 
   const addNewNote = (note) => {
     console.log(note);
-
-    // if(localStorage.getItem(selectedNote)){
-    //  setNoteList(JSON.parse(localStorage.getItem(selectedNote)));
-    // }
 
     const now = new Date();
     const day = now.getDate();
@@ -57,13 +54,25 @@ const AddNotesBox = ({selectedNote}) => {
       }
       <div className='addNotesBox'>
         <textarea
+        value={note}
           onChange={handleChange}
           rows="5"  // Set number of rows
           cols="50" // Set number of columns
           placeholder="Enter your text here..."
         />
-        <button onClick={()=>addNewNote(note)}>Add</button>
-      </div>
+      <button
+        style={{
+          backgroundImage: `url(${send_image})`,
+          backgroundSize: 'cover',
+          width: '20px',
+          height: '20px',
+          border: 'none',
+          cursor: 'pointer',
+          filter: !note ? 'grayscale(100%)' : 'none',
+        }}
+        onClick={() => addNewNote(note)} // You can replace this with your form submission logic
+        disabled={!note} // Disable the button if textarea is empty
+      />      </div>
     </div>
   )
 }

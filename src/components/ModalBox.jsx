@@ -2,7 +2,7 @@ import React, { useRef,useEffect, useState } from 'react'
 import './ModalBox.css'
 import { useSearchParams } from 'react-router-dom';
 
-const ModalBox = ({ isOpen, onClose,addNodeGroup,addColor }) => {
+const ModalBox = ({ isOpen, onClose,addDetails }) => {
     const modalRef = useRef(null);
     const [groupName,setGroupName] = useState('');
     const [selectedColor, setSelectedColor] = useState('#000000');
@@ -15,6 +15,7 @@ const ModalBox = ({ isOpen, onClose,addNodeGroup,addColor }) => {
     // Handle color selection from the fixed colors palette
     const handleColorSelect = (color) => {
       setSelectedColor(color); // Update the selected color
+      console.log(color);
     };
 
   // Close modal if clicked outside the modal content
@@ -37,9 +38,8 @@ const ModalBox = ({ isOpen, onClose,addNodeGroup,addColor }) => {
 
   if (!isOpen) return null;
   
-  const createNodeGroup = () => {
-    addNodeGroup(groupName);
-    addColor(selectedColor)
+  const createNoteGroup = () => {
+    addDetails({noteGroup : groupName,color : selectedColor});
     onClose(); 
   }
 
@@ -70,7 +70,7 @@ const ModalBox = ({ isOpen, onClose,addNodeGroup,addColor }) => {
         ))}      
         </div>                
           </div>
-          <div><button onClick={createNodeGroup}>Create</button></div>
+          <div><button onClick={createNoteGroup}>Create</button></div>
       </div>
     </div>
     )

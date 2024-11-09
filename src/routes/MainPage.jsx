@@ -24,7 +24,7 @@ const MainPage = () => {
     },[])
 
 
-    const handleAddNodeGroup = (data) =>{
+    const handleDetails = (data) =>{
             console.log(notesData);
             setNotesData( prev => [...prev,data]);
             if(!localStorage.getItem('noteLabelList')){
@@ -48,9 +48,9 @@ const MainPage = () => {
             <div className={styles.pocketNotes}>Pocket Notes</div>
             <div className={styles.notesList}>
                 {notesData.map((item,index) => (
-                    <div key={index} onClick={()=>openNotesData(item)}>
-                        <span className='notes-initial'>{item.split(' ')[0][0].toUpperCase()}{item.split(' ')[1][0].toUpperCase()}</span> &nbsp;
-                        <span className='notes-name'>{item}</span>
+                    <div key={index} onClick={()=>openNotesData(item.noteGroup)}>
+                        <span className='notes-initial'>{item.noteGroup.split(' ')[0][0].toUpperCase()}{item.noteGroup.split(' ')[1][0].toUpperCase()}</span> &nbsp;
+                        <span className='notes-name'>{item.noteGroup}</span>
                     </div>
                 ))}
             </div>
@@ -83,7 +83,7 @@ const MainPage = () => {
             </div>
         )}
     </div>
-    {isModalOpen && (<ModalBox isOpen={isModalOpen} onClose={closeModal} addNodeGroup={handleAddNodeGroup}/>)}
+    {isModalOpen && (<ModalBox isOpen={isModalOpen} onClose={closeModal} addDetails={handleDetails}/>)}
     </>
   )
 }
