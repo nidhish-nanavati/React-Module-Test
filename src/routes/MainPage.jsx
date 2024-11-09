@@ -1,35 +1,65 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './MainPage.module.css'
 import notes_image from '../assets/notes-taking-image.png'
 import lock_image from '../assets/lock.png'
 import plus_sign from '../assets/plus.png'
 import ModalBox from '../components/ModalBox'
 import { useState } from 'react'
+import AddNotesBox from '../components/AddNotesBox'
 
 const MainPage = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [notesData,setNotesData] = useState({});
+    const [notesData,setNotesData] = useState([]);
+    const [isNoteSelected, setIsNoteSelected] = useState(false);
+    const [selectedNote,setSelectedNote] = useState('');
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
     
+    useEffect(() => {
+        if(localStorage.getItem('noteLabelList')){
+            setNotesData(JSON.parse(localStorage.getItem('noteLabelList')));
+        }
+    },[])
+
+
     const handleAddNodeGroup = (data) =>{
-        setNotesData((prev) => ({
-            ...prev,
-            [data] : []
-        }));
+            console.log(notesData);
+            setNotesData( prev => [...prev,data]);
+            if(!localStorage.getItem('noteLabelList')){
+                console.log(localStorage.getItem('noteLabelList'));
+                localStorage.setItem('noteLabelList',JSON.stringify([data]));                
+            }
+            else{
+                console.log(localStorage.getItem('noteLabelList'));
+                localStorage.setItem('noteLabelList',JSON.stringify([...JSON.parse(localStorage.getItem('noteLabelList')),data]));
+            }
+        }
+
+    const openNotesData = (item) => {
+        setIsNoteSelected(true);
+        setSelectedNote(item);
     }
   return (
     <>
     <div className={`${styles.mainContainer} ${isModalOpen ? styles.blur : ''}`}>
         <div className={styles.notesListContainer}>
             <div className={styles.pocketNotes}>Pocket Notes</div>
+            <div className={styles.notesList}>
+                {notesData.map((item,index) => (
+                    <div key={index} onClick={()=>openNotesData(item)}>
+                        <span className='notes-initial'>{item.split(' ')[0][0].toUpperCase()}{item.split(' ')[1][0].toUpperCase()}</span> &nbsp;
+                        <span className='notes-name'>{item}</span>
+                    </div>
+                ))}
+            </div>
             <div className={styles.addButton}>
                 <img src={plus_sign} alt ='plus' onClick={openModal}/>
             </div>
+            
         </div>
-
+        {!isNoteSelected && (
         <div className={styles.notesDisplayContainer}>
             <div className={styles.notesImage}>
                 <img src={notes_image} alt='Taking notes'/>
@@ -46,6 +76,12 @@ const MainPage = () => {
                 <span className={styles.encryptionText}>end-to-end encrypted</span>
             </div>
         </div>
+        )}
+        {isNoteSelected && (
+            <div className={styles.notesDisplayContainer}>
+                <AddNotesBox selectedNote={selectedNote}/>
+            </div>
+        )}
     </div>
     {isModalOpen && (<ModalBox isOpen={isModalOpen} onClose={closeModal} addNodeGroup={handleAddNodeGroup}/>)}
     </>

@@ -29,6 +29,10 @@
     position: sticky;
 }
 
+.notesList{
+    cursor: pointer;
+}
+
 .notesImage{
     margin-top: 15%;
     margin-left: 10%;
