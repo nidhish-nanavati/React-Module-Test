@@ -4,9 +4,118 @@
     box-sizing: border-box;
 }
 
+
+.notesBox{
+    height: 100vh;
+    position: relative;
+}
+
+.notesTitle{
+    height: 50px;
+    background-color:  #001F8B;
+    width: 100%;
+}
+
 .addNotesBox
 {
     position: absolute;
     bottom: 0;
     left: 0;
+    width: 100%;
+    background-color: #001F8B;
+}
+
+.addNotesTextArea{
+    width: 98%;                 /* Set textarea width to 80% of the container */
+    margin: 1%;
+    /* resize: none;               Optional: disable resizing */
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.addNotesTextArea::placeholder{
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.addNotesButton{
+    position: absolute;
+    right: 20px;                /* Position button inside container */
+    bottom: 30px;
+    padding: 8px 12px;
+}
+
+.notesTitle{
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    gap:10px;
+    height: 50px;
+}
+
+
+.notesInitial{
+    font-family: Roboto;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 23.45px;
+    letter-spacing: 0.02em;
+    color: white;
+    border-radius : 50%;
+    height : 50px;
+    width: 50px;
+}
+
+.notesName{
+    font-family: Roboto;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */    
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28.13px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: white;
+}
+
+.notesListContainer{
+    height: 100vh;
+    width: 100%;
+    overflow-y:auto;
+}
+
+.noteData{
+    background-color: white;
+    width: 98%;
+    margin: 10px 10px;
+    color: black;
+    font-family: Roboto;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 28.83px;
+    letter-spacing: 0.035em;
+    text-align: left;
+    padding: 10px;
+}
+
+.noteName{
+    word-wrap: break-word;       /* Break long words to prevent overflow */
+    white-space: normal;         /* Ensure text wraps when reaching the container's edge */    
+}
+
+.noteTime{
+    /* float: right; */
+text-align: right;
+    
 }

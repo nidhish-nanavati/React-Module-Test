@@ -39,6 +39,7 @@ const MainPage = () => {
 
     const openNotesData = (item) => {
         setIsNoteSelected(true);
+        console.log(item);
         setSelectedNote(item);
     }
   return (
@@ -46,11 +47,13 @@ const MainPage = () => {
     <div className={`${styles.mainContainer} ${isModalOpen ? styles.blur : ''}`}>
         <div className={styles.notesListContainer}>
             <div className={styles.pocketNotes}>Pocket Notes</div>
-            <div className={styles.notesList}>
+            <div className={styles.notesList}>  
                 {notesData.map((item,index) => (
-                    <div key={index} onClick={()=>openNotesData(item.noteGroup)}>
-                        <span className='notes-initial'>{item.noteGroup.split(' ')[0][0].toUpperCase()}{item.noteGroup.split(' ')[1][0].toUpperCase()}</span> &nbsp;
-                        <span className='notes-name'>{item.noteGroup}</span>
+                    <div key={index} onClick={()=>openNotesData(item)} className={styles.noteListItem}>
+                        <div className={styles.notesInitial} style={{
+                            backgroundColor: `${item.color}`,
+                        }}>{item.noteGroup.split(' ')[0][0].toUpperCase()}{item.noteGroup.split(' ')[1][0].toUpperCase()}</div> &nbsp;
+                        <div className={styles.notesName}>{item.noteGroup}</div>
                     </div>
                 ))}
             </div>
@@ -83,7 +86,7 @@ const MainPage = () => {
             </div>
         )}
     </div>
-    {isModalOpen && (<ModalBox isOpen={isModalOpen} onClose={closeModal} addDetails={handleDetails}/>)}
+    {isModalOpen && (<ModalBox isOpen={isModalOpen} onClose={closeModal} addDetails={handleDetails}/>)} 
     </>
   )
 }

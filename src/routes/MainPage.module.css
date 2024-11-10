@@ -1,21 +1,21 @@
 .mainContainer{
     display: flex;
     width: 100%;
-    height: 100vh;
 }
 .notesListContainer{
     /* display: flex;
     width: 30%; */
     width: 30%;
     position: relative;
+    height: 100vh;
 }
 
 .notesDisplayContainer{
     /* width: 100%; */
     background-color:  rgba(218, 229, 245, 1);
     position: relative;
-    height: 100%;
     width: 70%;
+    height: 100vh;
 }
 
 .pocketNotes{
@@ -27,11 +27,59 @@
     line-height: 41.02px;
     letter-spacing: 0.02em;
     position: sticky;
+    top: 0;
 }
 
 .notesList{
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
 }
+
+
+.noteListItem{
+    margin: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    gap:10px;
+    height: 50px;
+}
+
+.noteListItem:hover{
+    background-color: #e0e0e0;
+}
+
+.notesName{
+    font-family: Roboto;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */    
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28.13px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    text-decoration-skip-ink: none;    
+}
+
+.notesInitial{
+    font-family: Roboto;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 23.45px;
+    letter-spacing: 0.02em;
+    color: white;
+    border-radius : 50%;
+    height : 50px;
+    width: 50px;
+}
+
+
 
 .notesImage{
     margin-top: 15%;

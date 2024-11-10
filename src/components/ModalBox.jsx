@@ -1,11 +1,10 @@
 import React, { useRef,useEffect, useState } from 'react'
 import './ModalBox.css'
-import { useSearchParams } from 'react-router-dom';
 
 const ModalBox = ({ isOpen, onClose,addDetails }) => {
     const modalRef = useRef(null);
     const [groupName,setGroupName] = useState('');
-    const [selectedColor, setSelectedColor] = useState('#000000');
+    const [selectedColor, setSelectedColor] = useState('#ffffff');
 
       // Array of fixed colors for the picker
   const colors = [
@@ -44,15 +43,15 @@ const ModalBox = ({ isOpen, onClose,addDetails }) => {
   }
 
   return (
-    <div className='model-overlay'>
+    <div className='modelOverlay'>
       <div className='modalBox' ref={modalRef}>
-          <div>Create New app</div>
-          <div>Group Name<input type='text' placeholder='Enter group name' onChange={(e)=>setGroupName(e.target.value)} /></div>
-          <div>Choose color
+          <div className='modalBoxCreateText'>Create New app</div>
+          <div className='modalBoxGroupNameText'>Group Name<input type='text' placeholder='Enter group name' onChange={(e)=>setGroupName(e.target.value)} /></div>
+          <div className='modalBoxColor'><div className='modalBoxColorText'>Choose color</div>
           <div style={{
         display: 'grid', 
-        gridTemplateColumns: 'repeat(6, 60px)',  // 6 columns for the color swatches
-        gap: '10px', 
+        gridTemplateColumns: 'repeat(6, 30px)',  // 6 columns for the color swatches
+        gap: '5px', 
         justifyContent: 'center',
       }}>
           {colors.map((color, index) => (
@@ -60,17 +59,19 @@ const ModalBox = ({ isOpen, onClose,addDetails }) => {
             key={index} 
             onClick={() => handleColorSelect(color)} 
             style={{
-              width: '30px', 
-              height: '30px', 
+              width: '20px', 
+              height: '20px', 
               backgroundColor: color, 
               borderRadius: '50%', // Square corners with rounded edges
               cursor: 'pointer', 
+              marginTop:'10px',
+              border: selectedColor === color ? '3px solid black' : '3px solid transparent'
             }}
           />
         ))}      
         </div>                
           </div>
-          <div><button onClick={createNoteGroup}>Create</button></div>
+          <div className='createButton' ><button onClick={createNoteGroup}>Create</button></div>
       </div>
     </div>
     )
