@@ -1,13 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .mainContainer{
     display: flex;
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
 }
+
 .notesListContainer{
     /* display: flex;
     width: 30%; */
     width: 30%;
     position: relative;
-    height: 100vh;
 }
 
 .notesDisplayContainer{
@@ -15,7 +23,7 @@
     background-color:  rgba(218, 229, 245, 1);
     position: relative;
     width: 70%;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .pocketNotes{
@@ -35,20 +43,44 @@
     flex-direction: column;
     overflow-y: auto;
     height: 100%;
+    /* scrollbar-width: thin;
+    scrollbar-color: #ffffff gray; */
+}
+
+::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar in pixels */
+  }
+  
+  /* Style the draggable thumb (the part you drag) */
+::-webkit-scrollbar-thumb {
+    background-color: #ffffff;   /* White color for the scrollbar thumb */
+    border-radius: 10px;         /* Curved corners for the thumb */
+  }
+  
+  /* Style the scrollbar track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background-color: #808080;   /* Gray color for the track */
+    border-radius: 10px;         /* Optional: Rounded corners for the track */
+}
+  
+  /* Hide the scrollbar buttons (arrows) */
+::-webkit-scrollbar-button {
+    display: none;               /* Hide the top and bottom buttons */
 }
 
 
+
 .noteListItem{
-    margin: 15px;
     cursor: pointer;
     display: flex;
     justify-content: flex-start;
     gap:10px;
-    height: 50px;
+    height: 65px;
 }
 
 .noteListItem:hover{
     background-color: #e0e0e0;
+    border-radius: 10px;
 }
 
 .notesName{
@@ -77,9 +109,8 @@
     border-radius : 50%;
     height : 50px;
     width: 50px;
+    margin: 8px;
 }
-
-
 
 .notesImage{
     margin-top: 15%;
@@ -98,7 +129,6 @@
     font-weight: 700;
     line-height: 58.59px;
     letter-spacing: 0.02em;
-    transform: translateX(40%);
 }
 
 .pocketNotesDescription{
@@ -128,10 +158,8 @@
     width: 50px;
 }
 
-
-
 .mainContainer.blur{
     filter: blur(5px); /* Adjust blur intensity as needed */
     transition: filter 0.3s ease; /* Smooth transition for blur */
-  }
+}
   

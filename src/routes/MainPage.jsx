@@ -47,7 +47,7 @@ const MainPage = () => {
     <div className={`${styles.mainContainer} ${isModalOpen ? styles.blur : ''}`}>
         <div className={styles.notesListContainer}>
             <div className={styles.pocketNotes}>Pocket Notes</div>
-            <div className={styles.notesList}>  
+            <div className={styles.notesList} title="" aria-label="">  
                 {notesData.map((item,index) => (
                     <div key={index} onClick={()=>openNotesData(item)} className={styles.noteListItem}>
                         <div className={styles.notesInitial} style={{

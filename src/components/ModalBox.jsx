@@ -4,7 +4,7 @@ import './ModalBox.css'
 const ModalBox = ({ isOpen, onClose,addDetails }) => {
     const modalRef = useRef(null);
     const [groupName,setGroupName] = useState('');
-    const [selectedColor, setSelectedColor] = useState('#ffffff');
+    const [selectedColor, setSelectedColor] = useState('#B38BFA');
 
       // Array of fixed colors for the picker
   const colors = [

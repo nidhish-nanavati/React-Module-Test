@@ -8,6 +8,8 @@
 .notesBox{
     height: 100vh;
     position: relative;
+    display: flex;        /* Flexbox container */
+    flex-direction: column; /* Stack divs vertically */    
 }
 
 .notesTitle{
@@ -33,6 +35,11 @@
     padding: 10px;
     box-sizing: border-box;
     resize: none;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-align: left;
 }
 
 .addNotesTextArea::placeholder{
@@ -41,8 +48,6 @@
     font-weight: 400;
     letter-spacing: 0.02em;
     text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
 }
 
 .addNotesButton{
@@ -50,6 +55,7 @@
     right: 20px;                /* Position button inside container */
     bottom: 30px;
     padding: 8px 12px;
+    flex-grow: 1;
 }
 
 .notesTitle{
@@ -57,7 +63,8 @@
     display: flex;
     justify-content: flex-start;
     gap:10px;
-    height: 50px;
+    height: 65px;
+    padding: 10px;
 }
 
 
@@ -116,6 +123,5 @@
 
 .noteTime{
     /* float: right; */
-text-align: right;
-    
+    text-align: right;
 }
