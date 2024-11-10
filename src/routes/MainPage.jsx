@@ -13,6 +13,7 @@ const MainPage = () => {
     const [notesData,setNotesData] = useState([]);
     const [isNoteSelected, setIsNoteSelected] = useState(false);
     const [selectedNote,setSelectedNote] = useState('');
+    const[overlay,setOverlay] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -39,8 +40,14 @@ const MainPage = () => {
 
     const openNotesData = (item) => {
         setIsNoteSelected(true);
-        console.log(item);
+        console.log(isNoteSelected);
         setSelectedNote(item);
+        console.log(selectedNote);
+        console.log(window.innerWidth);
+        if (window.innerWidth < 1024) {
+            setOverlay(true);
+            console.log(overlay);
+        }        
     }
   return (
     <>
@@ -82,7 +89,7 @@ const MainPage = () => {
         )}
         {isNoteSelected && (
             <div className={styles.notesDisplayContainer}>
-                <AddNotesBox selectedNote={selectedNote}/>
+                <AddNotesBox selectedNote={selectedNote} overlay={overlay}/>
             </div>
         )}
     </div>

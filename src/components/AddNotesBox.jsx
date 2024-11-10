@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react'
 import send_image from '../assets/send.png'
 import dot_image from '../assets/dot.png'
 import './AddNotesBox.css'
+import back_button from '../assets/back.png'
 
-const AddNotesBox = ({selectedNote}) => {
+const AddNotesBox = ({selectedNote, overlay}) => {
 
     const [note,setNote] = useState('');
-    const [noteList,setNoteList] = useState([{}]); 
+    const [noteList,setNoteList] = useState([{}]);
+    const [showOverlay,setShowOverlay] = useState(false);
     
+    useEffect(() =>{
+      setShowOverlay(overlay);
+    }
+    ,[])
+
     const handleChange = (e) => {
     setNote(e.target.value); 
   };
@@ -41,9 +48,26 @@ const AddNotesBox = ({selectedNote}) => {
     else
       localStorage.setItem(selectedNote.noteGroup,JSON.stringify([...JSON.parse(localStorage.getItem(selectedNote.noteGroup)),{ id: noteList.length + 1, noteData : note, date : date, time : time}]));
   }
+
+  const nonOverlayStyle = {
+    height: '100vh',
+    position: 'relative'
+  };
+
+  const overlayStyle ={
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    minWidth: '100%',
+    maxWidth: '100%',
+    zIndex : '1000'
+  };
   return (
-    <div className='notesBox'>
+    <div style={showOverlay ? overlayStyle : nonOverlayStyle} className='notesBox'>
       <div className='notesTitle'>
+        {showOverlay && (<button onClick={()=> setShowOverlay(false)} className='backButton' style={{
+          background: 'transparent'
+        }} ><img src={back_button} height='20px' width='20px'/></button>)}
         <span className='notesInitial' style={{
           backgroundColor : `${selectedNote.color}`,
           borderRadius: '50%'
@@ -71,6 +95,7 @@ const AddNotesBox = ({selectedNote}) => {
         <button className='addNotesButton'
           style={{
             backgroundImage: `url(${send_image})`,
+            backgroundColor: 'white',
             backgroundSize: 'cover',
             width: '20px',
             height: '20px',

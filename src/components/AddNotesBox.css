@@ -8,8 +8,6 @@
 .notesBox{
     height: 100vh;
     position: relative;
-    display: flex;        /* Flexbox container */
-    flex-direction: column; /* Stack divs vertically */    
 }
 
 .notesTitle{
@@ -17,6 +15,18 @@
     background-color:  #001F8B;
     width: 100%;
 }
+/* 
+@media (max-width: 1024px) {
+    /* Tablet portrait mode or large phones */
+    /* .notesBox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        z-index : 1000 !important;
+    } */
+
 
 .addNotesBox
 {

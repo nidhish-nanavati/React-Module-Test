@@ -26,6 +26,18 @@
     /* height: 100vh; */
 }
 
+
+@media (max-width: 1024px) {
+    /* Tablet portrait mode or large phones */
+
+    .notesListContainer{
+        /* display: flex;
+        width: 30%; */
+        min-width: 100%; /* Full viewport width */
+        min-height: 100%; /* Full viewport height */    }
+  }
+
+
 .pocketNotes{
     text-align: center;
     padding: 8%;
