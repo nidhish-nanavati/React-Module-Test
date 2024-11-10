@@ -4,16 +4,18 @@ import dot_image from '../assets/dot.png'
 import './AddNotesBox.css'
 import back_button from '../assets/back.png'
 
-const AddNotesBox = ({selectedNote, overlay}) => {
+const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
 
     const [note,setNote] = useState('');
     const [noteList,setNoteList] = useState([{}]);
-    const [showOverlay,setShowOverlay] = useState(false);
+    // const [showOverlay,setShowOverlay] = useState(false);
     
-    useEffect(() =>{
-      setShowOverlay(overlay);
-    }
-    ,[])
+    // useEffect(() =>{
+    //   setShowOverlay(overlay);
+    // }
+    // ,[])
+
+    console.log(overlay);
 
     const handleChange = (e) => {
     setNote(e.target.value); 
@@ -49,6 +51,9 @@ const AddNotesBox = ({selectedNote, overlay}) => {
       localStorage.setItem(selectedNote.noteGroup,JSON.stringify([...JSON.parse(localStorage.getItem(selectedNote.noteGroup)),{ id: noteList.length + 1, noteData : note, date : date, time : time}]));
   }
 
+  const handleOverlayClose = () => {
+    overlayValue(false);
+  }
   const nonOverlayStyle = {
     height: '100vh',
     position: 'relative'
@@ -63,9 +68,9 @@ const AddNotesBox = ({selectedNote, overlay}) => {
     zIndex : '1000'
   };
   return (
-    <div style={showOverlay ? overlayStyle : nonOverlayStyle} className='notesBox'>
+    <div style={overlay ? overlayStyle : nonOverlayStyle} className='notesBox'>
       <div className='notesTitle'>
-        {showOverlay && (<button onClick={()=> setShowOverlay(false)} className='backButton' style={{
+        {overlay && (<button onClick={handleOverlayClose} className='backButton' style={{
           background: 'transparent'
         }} ><img src={back_button} height='20px' width='20px'/></button>)}
         <span className='notesInitial' style={{

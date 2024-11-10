@@ -49,6 +49,10 @@ const MainPage = () => {
             console.log(overlay);
         }        
     }
+
+    const handleOverlayValue = (overlayValue) => {
+        setOverlay(false);
+    }
   return (
     <>
     <div className={`${styles.mainContainer} ${isModalOpen ? styles.blur : ''}`}>
@@ -89,7 +93,7 @@ const MainPage = () => {
         )}
         {isNoteSelected && (
             <div className={styles.notesDisplayContainer}>
-                <AddNotesBox selectedNote={selectedNote} overlay={overlay}/>
+                <AddNotesBox selectedNote={selectedNote} overlay={overlay} overlayValue={handleOverlayValue}/>
             </div>
         )}
     </div>
