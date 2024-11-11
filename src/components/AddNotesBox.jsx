@@ -26,6 +26,13 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
   }
   ,[selectedNote]);
 
+  const handleEnterPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addNewNote(note);
+    }
+  }
+
   const addNewNote = (note) => {
     console.log(note);
 
@@ -89,9 +96,10 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
           <textarea className='addNotesTextArea'
           value={note}
             onChange={handleChange}
-            rows="5"  // Set number of rows
-            cols="50" // Set number of columns
+            rows="5"  // Setting number of rows
+            cols="50" // Setting number of columns
             placeholder="Enter your text here..."
+            onKeyDown={handleEnterPress}
           />
         <button className='addNotesButton'
           style={{
@@ -104,8 +112,8 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
             cursor: note ? 'pointer' : 'not-allowed',
             filter: !note ? 'grayscale(100%)' : 'none',
           }}
-          onClick={() => addNewNote(note)} // You can replace this with your form submission logic
-          disabled={!note} // Disable the button if textarea is empty
+          onClick={() => addNewNote(note)}
+          disabled={!note} // Disable the button because textarea is empty
         />
       </div>
     </div>
