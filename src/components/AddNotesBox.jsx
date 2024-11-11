@@ -50,6 +50,9 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
       localStorage.setItem(selectedNote.noteGroup,JSON.stringify([...JSON.parse(localStorage.getItem(selectedNote.noteGroup)),{ id: noteList.length + 1, noteData : note, date : date, time : time}]));
   }
 
+  const editNote = (data) => {
+    setNote(data);
+  }
   const handleOverlayClose = () => {
     overlayValue(false);
   }
@@ -85,7 +88,7 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
       <div className='notesListContainer'>
       {
         noteList.map((item) => (
-          <div key ={item.id} className='noteData'>
+          <div key ={item.id} className='noteData' onClick={() => editNote(item.noteData)}>
             <div className='noteName'>{item.noteData}</div>
             <div className='noteTime'>{item.date}&nbsp;&nbsp;<img src={dot_image} style={{transform:'scale(0.7)'}}/>&nbsp;&nbsp;{item.time}</div>
           </div>
@@ -94,7 +97,7 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
       </div>
       <div className='addNotesBox'>
           <textarea className='addNotesTextArea'
-          value={note}
+            value={note}
             onChange={handleChange}
             rows="5"  // Setting number of rows
             cols="50" // Setting number of columns

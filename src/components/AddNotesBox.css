@@ -5,7 +5,7 @@
 }
 
 
-.notesBox{
+.notesBox {
     height: 100vh;
     position: relative;
     display: flex;
@@ -112,6 +112,7 @@
     letter-spacing: 0.035em;
     text-align: left;
     padding: 10px;
+    cursor: pointer;
 }
 
 .noteName{
