@@ -8,14 +8,6 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
 
     const [note,setNote] = useState('');
     const [noteList,setNoteList] = useState([{}]);
-    // const [showOverlay,setShowOverlay] = useState(false);
-    
-    // useEffect(() =>{
-    //   setShowOverlay(overlay);
-    // }
-    // ,[])
-
-    console.log(overlay);
 
     const handleChange = (e) => {
     setNote(e.target.value); 
@@ -65,14 +57,18 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
     left: '0',
     minWidth: '100%',
     maxWidth: '100%',
-    zIndex : '1000'
+    zIndex : '1000',
+    opacity: '1',
+    backgroundColor:'#DCE7F7'
   };
   return (
     <div style={overlay ? overlayStyle : nonOverlayStyle} className='notesBox'>
       <div className='notesTitle'>
-        {overlay && (<button onClick={handleOverlayClose} className='backButton' style={{
-          background: 'transparent'
-        }} ><img src={back_button} height='20px' width='20px'/></button>)}
+        {overlay && (<div onClick={handleOverlayClose} className='backButton' style={{
+          background: 'transparent',
+          display:'flex',
+          alignItems:'center'
+        }} ><img src={back_button} height='20px' width='20px'/></div>)}
         <span className='notesInitial' style={{
           backgroundColor : `${selectedNote.color}`,
           borderRadius: '50%'
@@ -84,7 +80,7 @@ const AddNotesBox = ({selectedNote, overlay,overlayValue }) => {
         noteList.map((item) => (
           <div key ={item.id} className='noteData'>
             <div className='noteName'>{item.noteData}</div>
-            <div className='noteTime'>{item.date}&nbsp;&nbsp;<img src={dot_image}/>&nbsp;&nbsp;{item.time}</div>
+            <div className='noteTime'>{item.date}&nbsp;&nbsp;<img src={dot_image} style={{transform:'scale(0.7)'}}/>&nbsp;&nbsp;{item.time}</div>
           </div>
         ))
       }

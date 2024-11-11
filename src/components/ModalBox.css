@@ -16,7 +16,7 @@
     }
 
 @media (max-width: 1024px) {
-    /* Tablet portrait mode or large phones */
+
     .modalBox{
         top: 40%;
         left: 0%;
@@ -24,9 +24,10 @@
     }
 
     .createButton button{
-        width: 50%; /* or any fixed width */
-        margin-left: auto;
-        margin-right: auto;    }
+        float: left;
+        margin-left: 10px;
+        margin-right: auto;  
+    }
   }
 
 .modalBoxCreateText{

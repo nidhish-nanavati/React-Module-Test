@@ -86,7 +86,10 @@ const MainPage = () => {
                 Use Pocket Notes on up to 4 linked devices and 1 mobile phone
             </div>
             <div className={styles.encryption}>
-                <img src={lock_image}></img>
+                <img src={lock_image} style={{
+                    height : '15px',
+                    width: '12px'
+                }} />&nbsp;
                 <span className={styles.encryptionText}>end-to-end encrypted</span>
             </div>
         </div>

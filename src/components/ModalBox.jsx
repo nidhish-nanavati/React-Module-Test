@@ -6,7 +6,7 @@ const ModalBox = ({ isOpen, onClose,addDetails }) => {
     const [groupName,setGroupName] = useState('');
     const [selectedColor, setSelectedColor] = useState('#B38BFA');
 
-      // Array of fixed colors for the picker
+  // Array of fixed colors for the picker
   const colors = [
     "#B38BFA", "#FF79F2", "#43E6FC" , "#F19576", "#0047FF", "#6691FF"
   ];
@@ -31,7 +31,6 @@ const ModalBox = ({ isOpen, onClose,addDetails }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     }
     
-    // Clean up event listener on component unmount
     return () => document.removeEventListener("mousedown", handleClickOutside);    
   }, [isOpen, onClose]);
 
@@ -62,7 +61,7 @@ const ModalBox = ({ isOpen, onClose,addDetails }) => {
               width: '20px', 
               height: '20px', 
               backgroundColor: color, 
-              borderRadius: '50%', // Square corners with rounded edges
+              borderRadius: '50%',
               cursor: 'pointer', 
               marginTop:'10px',
               border: selectedColor === color ? '3px solid black' : '3px solid transparent'

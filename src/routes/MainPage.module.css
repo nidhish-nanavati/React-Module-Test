@@ -12,27 +12,20 @@
 }
 
 .notesListContainer{
-    /* display: flex;
-    width: 30%; */
     width: 30%;
     position: relative;
 }
 
 .notesDisplayContainer{
-    /* width: 100%; */
     background-color:  rgba(218, 229, 245, 1);
     position: relative;
     width: 70%;
-    /* height: 100vh; */
 }
 
 
 @media (max-width: 1024px) {
-    /* Tablet portrait mode or large phones */
 
     .notesListContainer{
-        /* display: flex;
-        width: 30%; */
         min-width: 100%; /* Full viewport width */
         min-height: 100%; /* Full viewport height */    }
   }
@@ -55,12 +48,10 @@
     flex-direction: column;
     overflow-y: auto;
     height: 100%;
-    /* scrollbar-width: thin;
-    scrollbar-color: #ffffff gray; */
 }
 
 ::-webkit-scrollbar {
-    width: 8px; /* Set the width of the scrollbar in pixels */
+    width: 6px; /* Set the width of the scrollbar in pixels */
   }
   
   /* Style the draggable thumb (the part you drag) */
@@ -125,9 +116,9 @@
 }
 
 .notesImage{
-    margin-top: 15%;
-    margin-left: 10%;
-    transform: translateX(10%); 
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
 }
 
 .notesImage img{
@@ -137,7 +128,9 @@
 
 .pocketNotesTitle{
     font-family: Roboto;
-    font-size: 30px;
+    width: 100%;
+    text-align: center;    
+    font-size: 35px;
     font-weight: 700;
     line-height: 58.59px;
     letter-spacing: 0.02em;
@@ -145,17 +138,28 @@
 
 .pocketNotesDescription{
     font-family: Roboto;
+    width: 100%;
+    text-align: center;
     font-size: 15px;
     font-weight: 500;
-    line-height: 32px;
+    line-height: 20px;
     letter-spacing: 0.02em;
-    transform: translateX(20%);    
+    margin-bottom: 15px;  
 }
 
 .encryption{
     position: absolute;
-    bottom: 5px;
-    padding-left: 400px;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.encryptionText{
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 400;
+    /* line-height: 32px; */
+    letter-spacing: 0.02em;
 }
 
 .addButton{
@@ -171,7 +175,7 @@
 }
 
 .mainContainer.blur{
-    filter: blur(5px); /* Adjust blur intensity as needed */
-    transition: filter 0.3s ease; /* Smooth transition for blur */
+    filter: blur(5px); 
+    transition: filter 0.3s ease;
 }
   

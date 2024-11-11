@@ -8,39 +8,34 @@
 .notesBox{
     height: 100vh;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .notesTitle{
-    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    gap:10px;
+    height: 65px;
+    padding: 10px;
     background-color:  #001F8B;
     width: 100%;
 }
-/* 
-@media (max-width: 1024px) {
-    /* Tablet portrait mode or large phones */
-    /* .notesBox {
-        position: fixed;
-        top: 0;
-        left: 0;
-        min-width: 100% !important;
-        max-width: 100% !important;
-        z-index : 1000 !important;
-    } */
-
 
 .addNotesBox
 {
     position: absolute;
-    bottom: 0;
+    bottom: 0px;               
     left: 0;
     width: 100%;
+    height: 140px;
     background-color: #001F8B;
 }
 
 .addNotesTextArea{
-    width: 98%;                 /* Set textarea width to 80% of the container */
+    width: 98%;                 
     margin: 1%;
-    /* resize: none;               Optional: disable resizing */
     border-radius: 5px;
     padding: 10px;
     box-sizing: border-box;
@@ -62,19 +57,10 @@
 
 .addNotesButton{
     position: absolute;
-    right: 20px;                /* Position button inside container */
+    right: 20px;
     bottom: 30px;
     padding: 8px 12px;
     flex-grow: 1;
-}
-
-.notesTitle{
-    cursor: pointer;
-    display: flex;
-    justify-content: flex-start;
-    gap:10px;
-    height: 65px;
-    padding: 10px;
 }
 
 
@@ -107,9 +93,11 @@
 }
 
 .notesListContainer{
-    height: 100vh;
     width: 100%;
     overflow-y:auto;
+    flex-grow: 1;
+    margin-bottom: 140px;
+    overflow-x: hidden;
 }
 
 .noteData{
@@ -127,11 +115,10 @@
 }
 
 .noteName{
-    word-wrap: break-word;       /* Break long words to prevent overflow */
-    white-space: normal;         /* Ensure text wraps when reaching the container's edge */    
+    word-wrap: break-word;       /* Breaking long words to prevent overflowing */
+    white-space: normal;         /* Ensure wrapping of text when reaching the container's edge */    
 }
 
 .noteTime{
-    /* float: right; */
     text-align: right;
 }
